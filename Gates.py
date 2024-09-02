@@ -44,6 +44,7 @@ def xnor_gate(xnor_gate_input, number_of_inputs):
     xnor_output  = not_gate(xnor_output)
     return xnor_output
 
-gate_input = [1, 0]
-output = xnor_gate(gate_input, number_of_inputs=2)
-print(output)
+if __name__ == "__main__":
+    gate_input = [1, 0]
+    output = xnor_gate(gate_input, number_of_inputs=2)
+    print(output)
