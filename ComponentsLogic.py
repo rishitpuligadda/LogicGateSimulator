@@ -2,7 +2,7 @@
 def and_gate(and_gate_input):
     and_output = and_gate_input[0]
     for i in range(1, len(and_gate_input)):
-        and_output = and_output * gate_input[i]
+        and_output = and_output * and_gate_input[i]
     return and_output
 
 def or_gate(or_gate_input):
@@ -46,15 +46,20 @@ def xnor_gate(xnor_gate_input):
     return xnor_output
 
 def multiplexer(mux_input, mux_selection):
-    if len(mux_input) > pow(2, mux_selection):
+    if len(mux_input) > pow(2, len(mux_selection)):
         print("There are more inputs than expected!")
-    elif len(mux_input) != pow(2, mux_selection):
+    elif len(mux_input) != pow(2, len(mux_selection)):
         print("Not enough inputs!")
     else:
-        mux_output = mux_input[mux_selection]
+        mux_s = 0
+        for i in range(len(mux_selection)):
+            mux_s += mux_selection[-(i+1)] * pow(2, i)
+        mux_output = mux_input[mux_s]
         return mux_output
 
+
+
 if __name__ == "__main__":
-    gate_input = [1, 0, 1]
-    output = multiplexer(gate_input, 2)
+    gate_input = [0, 1, 0, 1]
+    output = multiplexer(gate_input, [1, 1])
     print(output)
